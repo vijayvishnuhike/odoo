@@ -299,10 +299,13 @@ class Groups(models.Model):
 
 class ResUsersLog(models.Model):
     _name = 'res.users.log'
-    _order = 'id desc'
     _description = 'Users Log'
-    # Uses the magical fields `create_uid` and `create_date` for recording logins.
-    # See `bus.presence` for more recent activity tracking purposes.
+    _order = 'id desc'
+
+    user_id = fields.Many2one('res.users', string='User', required=True)
+    login_time = fields.Datetime(string='Login Time', default=fields.Datetime.now)
+    ip_address = fields.Char(string='IP Address')
+    # add other log fields as needed
 
     @api.autovacuum
     def _gc_user_logs(self):
