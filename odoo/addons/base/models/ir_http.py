@@ -275,8 +275,7 @@ class IrHttp(models.AbstractModel):
 
     @classmethod
     def _geoip_resolve(cls):
-        # return request._geoip_resolve()
-         return None
+        return request._geoip_resolve()
 
     @classmethod
     def _sanitize_cookies(cls, cookies):
