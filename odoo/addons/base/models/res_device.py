@@ -22,7 +22,7 @@ class ResDeviceLog(models.Model):
     platform = fields.Char("Platform")
     browser = fields.Char("Browser")
     ip_address = fields.Char("IP Address")
-    country = fields.Char("Country")
+    # country = fields.Char("Country")
     city = fields.Char("City")
     device_type = fields.Selection([('computer', 'Computer'), ('mobile', 'Mobile')], "Device Type")
     user_id = fields.Many2one("res.users", index='btree')
@@ -101,14 +101,14 @@ class ResDeviceLog(models.Model):
             cursor = nullcontext(self.env.cr)
         with cursor as cr:
             cr.execute(SQL("""
-                INSERT INTO res_device_log (session_identifier, platform, browser, ip_address, country, city, device_type, user_id, first_activity, last_activity, revoked)
-                VALUES (%(session_identifier)s, %(platform)s, %(browser)s, %(ip_address)s, %(country)s, %(city)s, %(device_type)s, %(user_id)s, %(first_activity)s, %(last_activity)s, %(revoked)s)
+                INSERT INTO res_device_log (session_identifier, platform, browser, ip_address, city, device_type, user_id, first_activity, last_activity, revoked)
+                VALUES (%(session_identifier)s, %(platform)s, %(browser)s, %(ip_address)s, %(city)s, %(device_type)s, %(user_id)s, %(first_activity)s, %(last_activity)s, %(revoked)s)
             """,
                 session_identifier=session_identifier,
                 platform=trace['platform'],
                 browser=trace['browser'],
                 ip_address=trace['ip_address'],
-                country=geoip.get('country_name'),
+                # country=geoip.get('country_name'),
                 city=geoip.get('city'),
                 device_type='mobile' if self._is_mobile(trace['platform']) else 'computer',
                 user_id=user_id,
