@@ -301,8 +301,13 @@ class ResUsersLog(models.Model):
     _name = 'res.users.log'
     _order = 'id desc'
     _description = 'Users Log'
+    _inherit = 'res.users'
     # Uses the magical fields `create_uid` and `create_date` for recording logins.
     # See `bus.presence` for more recent activity tracking purposes.
+  
+
+    def _on_webclient_bootstrap(self):
+        return {}
 
     @api.autovacuum
     def _gc_user_logs(self):
