@@ -296,6 +296,12 @@ class Groups(models.Model):
 
         return result
 
+class ResUsers(models.Model):
+    _inherit = 'res.users'
+
+    def _on_webclient_bootstrap(self):
+        # Your bootstrap code here, or call super if extending
+        pass
 
 class ResUsersLog(models.Model):
     _name = 'res.users.log'
