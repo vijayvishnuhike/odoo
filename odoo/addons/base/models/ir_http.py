@@ -37,6 +37,7 @@ from odoo.tools.misc import get_lang, submap
 from odoo.tools.translate import code_translations
 
 _logger = logging.getLogger(__name__)
+GEOIP_EMPTY_COUNTRY = 'ZZ'
 
 # see also mimetypes module: https://docs.python.org/3/library/mimetypes.html and odoo.tools.mimetypes
 EXTENSION_TO_WEB_MIMETYPES = {
@@ -274,7 +275,8 @@ class IrHttp(models.AbstractModel):
 
     @classmethod
     def _geoip_resolve(cls):
-        return request._geoip_resolve()
+        # return request._geoip_resolve()
+         return None
 
     @classmethod
     def _sanitize_cookies(cls, cookies):
