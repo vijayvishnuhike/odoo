@@ -384,6 +384,18 @@ class IrHttp(models.AbstractModel):
         http.root.session_store.vacuum(max_lifetime=http.get_session_max_inactivity(self.env))
 
     @api.model
+    def get_frontend_session_info(self):
+        """Return basic session info for frontend use. Adjust fields as needed."""
+        user = self.env.user
+        return {
+            'uid': user.id,
+            'name': user.name,
+            'lang': self.env.lang,
+            'is_public': user._is_public(),
+        }
+
+
+    @api.model
     def get_translations_for_webclient(self, modules, lang):
         if not modules:
             modules = self.pool._init_modules
