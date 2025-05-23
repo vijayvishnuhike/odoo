@@ -304,7 +304,7 @@ class ResUsers(models.Model):
         pass
 
 class ResUsersLog(models.Model):
-    _name = 'res.users.log'
+    _inherit = 'res.users'
     _description = 'Users Log'
     _order = 'id desc'
 
