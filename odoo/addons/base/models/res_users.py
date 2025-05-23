@@ -296,15 +296,6 @@ class Groups(models.Model):
 
         return result
 
-from odoo import models
-
-class ResUsers(models.Model):
-    _inherit = 'res.users'
-
-    def _on_webclient_bootstrap(self):
-        # method implementation
-        pass
-
 
 class ResUsersLog(models.Model):
     _name = 'res.users.log'
