@@ -296,24 +296,33 @@ class Groups(models.Model):
 
         return result
 
+from odoo import models
 
-class ResUsersLog(models.Model):
-    _name = 'res.users.log'
-    _order = 'id desc'
-    _description = 'Users Log'
-    # Uses the magical fields `create_uid` and `create_date` for recording logins.
-    # See `bus.presence` for more recent activity tracking purposes.
+class ResUsers(models.Model):
+    _inherit = 'res.users'
 
-    @api.autovacuum
-    def _gc_user_logs(self):
-        self._cr.execute("""
-            DELETE FROM res_users_log log1 WHERE EXISTS (
-                SELECT 1 FROM res_users_log log2
-                WHERE log1.create_uid = log2.create_uid
-                AND log1.create_date < log2.create_date
-            )
-        """)
-        _logger.info("GC'd %d user log entries", self._cr.rowcount)
+    def _on_webclient_bootstrap(self):
+        # method implementation
+        pass
+
+
+# class ResUsersLog(models.Model):
+#     _name = 'res.users.log'
+#     _order = 'id desc'
+#     _description = 'Users Log'
+#     # Uses the magical fields `create_uid` and `create_date` for recording logins.
+#     # See `bus.presence` for more recent activity tracking purposes.
+
+#     @api.autovacuum
+#     def _gc_user_logs(self):
+#         self._cr.execute("""
+#             DELETE FROM res_users_log log1 WHERE EXISTS (
+#                 SELECT 1 FROM res_users_log log2
+#                 WHERE log1.create_uid = log2.create_uid
+#                 AND log1.create_date < log2.create_date
+#             )
+#         """)
+#         _logger.info("GC'd %d user log entries", self._cr.rowcount)
 
 
 class Users(models.Model):
