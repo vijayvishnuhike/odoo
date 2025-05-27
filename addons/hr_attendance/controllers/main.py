@@ -53,8 +53,8 @@ class HrAttendance(http.Controller):
     @staticmethod
     def _get_geoip_response(mode, latitude=False, longitude=False):
         return {
-            'city': request.geoip.city.name or _('Unknown'),
-            'country_name': request.geoip.country.name or request.geoip.continent.name or _('Unknown'),
+            'city':  _('Unknown'),
+            'country_name':  _('Unknown'),
             'latitude': latitude or request.geoip.location.latitude or False,
             'longitude': longitude or request.geoip.location.longitude or False,
             'ip_address': request.geoip.ip,
