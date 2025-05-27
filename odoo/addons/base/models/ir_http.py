@@ -37,6 +37,7 @@ from odoo.tools.misc import get_lang, submap
 from odoo.tools.translate import code_translations
 
 _logger = logging.getLogger(__name__)
+GEOIP_EMPTY_COUNTRY = 'ZZ'
 
 # see also mimetypes module: https://docs.python.org/3/library/mimetypes.html and odoo.tools.mimetypes
 EXTENSION_TO_WEB_MIMETYPES = {
@@ -382,6 +383,18 @@ class IrHttp(models.AbstractModel):
         if os.getenv("ODOO_SKIP_GC_SESSIONS"):
             return
         http.root.session_store.vacuum(max_lifetime=http.get_session_max_inactivity(self.env))
+
+    @api.model
+    def get_frontend_session_info(self):
+        """Return basic session info for frontend use. Adjust fields as needed."""
+        user = self.env.user
+        return {
+            'uid': user.id,
+            'name': user.name,
+            'lang': self.env.lang,
+            'is_public': user._is_public(),
+        }
+
 
     @api.model
     def get_translations_for_webclient(self, modules, lang):
