@@ -224,6 +224,7 @@ CSRF_TOKEN_SALT = 60 * 60 * 24 * 365
 DEFAULT_LANG = 'en_US'
 
 GEOIP_EMPTY_COUNTRY = type('GeoIPEmptyCountry', (), {'name': None})()
+GEOIP_EMPTY_CITY = type('GeoIPEmptyCity', (), {'name': None})()
 
 # The dictionary to initialise a new session with.
 def get_default_session():
