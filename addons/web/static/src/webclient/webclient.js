@@ -6,7 +6,7 @@ import { registry } from "@web/core/registry";
 import { useBus, useService } from "@web/core/utils/hooks";
 import { ActionContainer } from "./actions/action_container";
 import { NavBar } from "./navbar/navbar";
-import './test.css'
+// import './test.css'
 // import "@web/webclient/test.css";
 
 
