@@ -94,7 +94,7 @@
                     </div>
                 </div>
                 <span t-if="widget.publicUser &amp;&amp; widget.channel.signupAllowed" class="d-block mt-2">
-                    <!-- <span>Don't have an account?</span> -->
+                    <span>Don't have an account?</span>
                     <a class="fw-bold" t-att-href="'/web/signup?redirect=' + widget.redirectURL">Sign Up!</a>
                 </span>
             </div>
