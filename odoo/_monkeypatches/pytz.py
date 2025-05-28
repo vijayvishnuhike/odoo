@@ -31,7 +31,7 @@ _tz_mapping = {
     "America/Rosario": "America/Argentina/Cordoba",
     "Antarctica/South_Pole": "Pacific/Auckland",
     "Asia/Ashkhabad": "Asia/Ashgabat",
-    "Asia/Calcutta": "Asia/Kolkata",
+    # "Asia/Calcutta": "Asia/Kolkata",
     "Asia/Chungking": "Asia/Shanghai",
     "Asia/Dacca": "Asia/Dhaka",
     "Asia/Katmandu": "Asia/Kathmandu",
